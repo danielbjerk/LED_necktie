@@ -9,6 +9,7 @@
 #ifndef BUS_COMMUNICATION_H_
 #define BUS_COMMUNICATION_H_
 
+#include "hardware.h"
 
 int bus_writer();
 

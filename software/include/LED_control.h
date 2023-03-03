@@ -9,8 +9,10 @@
 #ifndef LED_CONTROL_H_
 #define LED_CONTROL_H_
 
+#include "hardware.h"
 
-
+int turn_all_on();
+int turn_all_off();
 
 
 #endif /* LED_CONTROL_H_ */
