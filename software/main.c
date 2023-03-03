@@ -8,11 +8,12 @@
 #include <xc.h>
 #include "include/hardware.h"
 #include "include/LED_control.h"
+#include "include/bus_communication.h"
 
 // Included to do delays
 #include <util/delay.h>
 
-#define IS_MASTER 1
+#define IS_MASTER 0
 
 int main(void)
 {
@@ -20,7 +21,7 @@ int main(void)
 	
 	// init_hardware(self_is_master_or_slave, self_num); (setter cur-animation-num til -1 slik at animate ikke viser noe
 	
-	init_leds();
+	init_leds();	// led med små bokstaver :)
 	if (IS_MASTER) {
 		init_master();
 	} else {
@@ -38,10 +39,26 @@ int main(void)
 		// needing to use seperate pins for both input and output from the bus, if design is to be modular.
     while(1)
     {
-		turn_all_on();
-		_delay_ms(1000);
-		turn_all_off();
-		_delay_ms(1000);
+		// Temporary, to move to own thread or as part of animate.
+		if (IS_MASTER) {
+			bus_writer(2);
+			turn_all_off();
+			turn_on_single(2);
+			_delay_ms(1000);
+			
+			bus_writer(3);
+			turn_all_off();
+			turn_on_single(3);
+			_delay_ms(1000);
+		} else {
+			int LED_num = bus_reader();
+			if (LED_num == -1) {
+				continue;
+			}
+			turn_all_off();
+			turn_on_single(LED_num);
+		}
+		
         // animate(CUR_ANIMATION_NUM);
 		
 		// animate ser ish sånn ut:

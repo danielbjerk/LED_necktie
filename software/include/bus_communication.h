@@ -11,8 +11,7 @@
 
 #include "hardware.h"
 
-int bus_writer();
-
+int bus_writer(int data);
 int bus_reader();
 // checks if data_ready is high (not active low, since module failure implies always low), reads from data-lines when ready
 // updates own animation_num with new number

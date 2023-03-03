@@ -13,6 +13,7 @@
 
 int turn_all_on();
 int turn_all_off();
-
+int LED_num_to_LED_bm(int num);
+int turn_on_single(int LED_num);
 
 #endif /* LED_CONTROL_H_ */

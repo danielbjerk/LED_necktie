@@ -15,15 +15,16 @@
 
 #define COM_BUS_PORT			PORTA
 #define DATA_READY_PIN_bm		PIN6_bm
+#define DATA_ADDRESS_START_bp	PIN3_bp
 #define DATA_PARALLEL_bm		(PIN3_bm | PIN4_bm | PIN5_bm)
 
 
 #define LED_PORT				PORTF
-#define LED1_bm					PIN5_bm
-#define LED2_bm					PIN4_bm
-#define LED3_bm					PIN3_bm
-#define LED4_bm					PIN2_bm
-#define ALL_LEDS_bm				(LED1_bm | LED2_bm | LED3_bm | LED4_bm)
+#define LED0_bm					PIN5_bm
+#define LED1_bm					PIN4_bm
+#define LED2_bm					PIN3_bm
+#define LED3_bm					PIN2_bm
+#define ALL_LEDS_bm				(LED0_bm | LED1_bm | LED2_bm | LED3_bm)
 
 
 int init_slave();
