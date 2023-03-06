@@ -7,40 +7,67 @@
 
 #include "include/LED_control.h"
 
+int turn_all_on_color(int color) {
+	switch (color) {
+		case 0:
+			LED_COLOR0_PORT.OUTSET = ALL_COLOR0_LEDS_bm;
+			break;
+		case 1:
+			LED_COLOR1_PORT.OUTSET = ALL_COLOR1_LEDS_bm;
+			break;
+	}
+	return 0;
+}
+
+int turn_all_off_color(int color) {
+	switch (color) {
+		case 0:
+			LED_COLOR0_PORT.OUTCLR = ALL_COLOR0_LEDS_bm;
+			break;
+		case 1:
+			LED_COLOR1_PORT.OUTCLR = ALL_COLOR1_LEDS_bm;
+			break;
+	}
+	return 0;
+}
+
 int turn_all_on() {
-	LED_PORT.OUTSET = ALL_LEDS_bm;
+	turn_all_on_color(0);
+	turn_all_on_color(1);
 	return 0;
 }
 
 int turn_all_off() {
-	LED_PORT.OUTCLR = ALL_LEDS_bm;
+	turn_all_off_color(0);
+	turn_all_off_color(1);
 	return 0;
 }
 
-int LED_num_to_LED_bm(int num) {
-	int LED_bm = -1;
-	switch (num) {
-		case 0:
-			LED_bm = LED0_bm;
-			break;
-		case 1:
-			LED_bm = LED1_bm;
-			break;
-		case 2:
-			LED_bm = LED2_bm;
-			break;
-		case 3:
-			LED_bm = LED3_bm;
-			break;
-		default:
-			LED_bm = -1;
-			break;
+int turn_on_single(int color, int LED_num) {
+	if (color == 0) {
+		switch (LED_num) {
+			case 0:
+				LED_COLOR0_PORT.OUTSET = LED0_COLOR0_bm;
+				break;
+			case 1:
+				LED_COLOR0_PORT.OUTSET = LED1_COLOR0_bm;
+				break;
+			case 2:
+				LED_COLOR0_PORT.OUTSET = LED2_COLOR0_bm;
+				break;
+			case 3:
+				LED_COLOR0_PORT.OUTSET = LED3_COLOR0_bm;
+				break;
+		}
+	} else if (color == 1) {
+		switch (LED_num) {
+			case 0:
+				LED_COLOR1_PORT.OUTSET = LED0_COLOR1_bm;
+				break;
+			case 1:
+				LED_COLOR1_PORT.OUTSET = LED1_COLOR1_bm;
+				break;
+		}
 	}
-	
-	return LED_bm;
-}
-
-int turn_on_single(int LED_num) {
-	LED_PORT.OUTSET = LED_num_to_LED_bm(LED_num);
 	return 0;
 }

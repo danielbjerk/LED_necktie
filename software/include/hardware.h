@@ -19,12 +19,20 @@
 #define DATA_PARALLEL_bm		(PIN3_bm | PIN4_bm | PIN5_bm)
 
 
-#define LED_PORT				PORTF
-#define LED0_bm					PIN5_bm
-#define LED1_bm					PIN4_bm
-#define LED2_bm					PIN3_bm
-#define LED3_bm					PIN2_bm
-#define ALL_LEDS_bm				(LED0_bm | LED1_bm | LED2_bm | LED3_bm)
+#define LED_COLOR0_PORT			PORTF
+#define LED_COLOR1_PORT			PORTB
+
+// COLOR0
+#define LED0_COLOR0_bm			PIN5_bm
+#define LED1_COLOR0_bm			PIN4_bm
+#define LED2_COLOR0_bm			PIN3_bm
+#define LED3_COLOR0_bm			PIN2_bm
+#define ALL_COLOR0_LEDS_bm		(LED0_COLOR0_bm | LED1_COLOR0_bm | LED2_COLOR0_bm | LED3_COLOR0_bm)
+
+// COLOR1
+#define LED0_COLOR1_bm			PIN5_bm
+#define LED1_COLOR1_bm			PIN4_bm
+#define ALL_COLOR1_LEDS_bm		(LED0_COLOR1_bm | LED1_COLOR1_bm)
 
 
 int init_slave();

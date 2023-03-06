@@ -43,20 +43,23 @@ int main(void)
 		if (IS_MASTER) {
 			bus_writer(2);
 			turn_all_off();
-			turn_on_single(2);
+			turn_all_on();
 			_delay_ms(1000);
 			
 			bus_writer(3);
 			turn_all_off();
-			turn_on_single(3);
+			turn_on_single(0, 1);
+			_delay_ms(1000);
+			
+			bus_writer(3);
+			turn_all_off();
+			turn_on_single(1, 0);
 			_delay_ms(1000);
 		} else {
-			int LED_num = bus_reader();
-			if (LED_num == -1) {
-				continue;
-			}
+			turn_all_on();
+			_delay_ms(1000);
 			turn_all_off();
-			turn_on_single(LED_num);
+			_delay_ms(1000);
 		}
 		
         // animate(CUR_ANIMATION_NUM);

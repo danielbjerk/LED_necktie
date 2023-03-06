@@ -21,5 +21,7 @@ int init_master() {
 }
 
 int init_leds() {
-	LED_PORT.DIRSET = ALL_LEDS_bm;
+	LED_COLOR0_PORT.DIRSET = ALL_COLOR0_LEDS_bm;
+	LED_COLOR1_PORT.DIRSET = ALL_COLOR1_LEDS_bm;
+	return 0;
 }
