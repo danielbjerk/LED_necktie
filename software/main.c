@@ -6,6 +6,7 @@
  */ 
 
 #include <xc.h>
+#include <avr/interrupt.h>
 #include "include/hardware.h"
 #include "include/LED_control.h"
 #include "include/bus_communication.h"
@@ -20,13 +21,9 @@ int main(void)
 	// Pseudocode:
 	
 	// init_hardware(self_is_master_or_slave, self_num); (setter cur-animation-num til -1 slik at animate ikke viser noe
-	
+	sei();	
 	init_leds();	// led med små bokstaver :)
-	if (IS_MASTER) {
-		init_master();
-	} else {
-		init_slave();
-	}
+	init_communication(IS_MASTER);
 	
 	// if (self_is_master) {
 		// start animation_sequencer_interrupt();
@@ -37,29 +34,27 @@ int main(void)
 		// question: should the master also read from the bus to update it's own animation?
 		// No, because this is slow and the master is already slower than the slaves and also this entails
 		// needing to use seperate pins for both input and output from the bus, if design is to be modular.
-    while(1)
+    uint8_t data_written;
+	while(1)
     {
 		// Temporary, to move to own thread or as part of animate.
 		if (IS_MASTER) {
-			bus_writer(2);
 			turn_all_off();
-			turn_all_on();
+			data_written = 1;
+			bus_writer(data_written);
+			turn_on_single(0, data_written);
 			_delay_ms(1000);
 			
-			bus_writer(3);
+			data_written = 2;
 			turn_all_off();
-			turn_on_single(0, 1);
-			_delay_ms(1000);
-			
-			bus_writer(3);
-			turn_all_off();
-			turn_on_single(1, 0);
+			bus_writer(data_written);
+			turn_on_single(0, data_written);
 			_delay_ms(1000);
 		} else {
-			turn_all_on();
-			_delay_ms(1000);
 			turn_all_off();
-			_delay_ms(1000);
+			if (receiveData != -1) {
+				turn_on_single(0, receiveData);	
+			}
 		}
 		
         // animate(CUR_ANIMATION_NUM);

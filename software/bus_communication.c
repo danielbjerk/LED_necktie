@@ -7,19 +7,13 @@
 
 #include "include/bus_communication.h"
 
-int bus_writer(int data) {
-	COM_BUS_PORT.OUTCLR = DATA_READY_PIN_bm;
-	COM_BUS_PORT.OUTCLR = DATA_PARALLEL_bm;
-	COM_BUS_PORT.OUTSET = (data << DATA_ADDRESS_START_bp) & DATA_PARALLEL_bm;
-	COM_BUS_PORT.OUTSET = DATA_READY_PIN_bm;
-	return 0;
-}
-
-int bus_reader() {
-	int data = -1;
-	int ready = COM_BUS_PORT.IN & DATA_READY_PIN_bm;
-	if (!ready) { return data; }
-	
-	data = (COM_BUS_PORT.IN & DATA_PARALLEL_bm) >> DATA_ADDRESS_START_bp;
-	return data;
+uint8_t bus_writer(uint8_t frame) {
+	SPI_PORT.OUT &= ~SPI_SS_PIN_bm;
+	SPI0.DATA = frame;
+	while (!(SPI0.INTFLAGS & SPI_IF_bm)) /* waits until data is exchanged*/
+	{
+		;
+	}
+	SPI_PORT.OUT |= SPI_SS_PIN_bm;
+	return SPI0.DATA;
 }

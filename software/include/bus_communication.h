@@ -11,8 +11,8 @@
 
 #include "hardware.h"
 
-int bus_writer(int data);
-int bus_reader();
+uint8_t bus_writer(uint8_t data);
+
 // checks if data_ready is high (not active low, since module failure implies always low), reads from data-lines when ready
 // updates own animation_num with new number
 // this probably should interrupt the currently playing animation and turn off all LEDs for synchronization-reasons

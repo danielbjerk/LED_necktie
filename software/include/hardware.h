@@ -13,11 +13,18 @@
 
 #define F_CPU					3333333UL	// 20MHz with default 6 prescaler
 
-#define COM_BUS_PORT			PORTA
-#define DATA_READY_PIN_bm		PIN6_bm
-#define DATA_ADDRESS_START_bp	PIN3_bp
-#define DATA_PARALLEL_bm		(PIN3_bm | PIN4_bm | PIN5_bm)
 
+// Communication
+
+#define SPI_PORT				PORTA
+#define SPI_MOSI_PIN_bm			PIN4_bm
+#define SPI_MISO_PIN_bm			PIN5_bm
+#define SPI_SCK_PIN_bm			PIN6_bm
+#define SPI_SS_PIN_bm			PIN7_bm
+
+
+
+// LEDs
 
 #define LED_COLOR0_PORT			PORTF
 #define LED_COLOR1_PORT			PORTB
@@ -34,9 +41,12 @@
 #define LED1_COLOR1_bm			PIN4_bm
 #define ALL_COLOR1_LEDS_bm		(LED0_COLOR1_bm | LED1_COLOR1_bm)
 
+// Stripe 0, stripe 1 etc.
 
-int init_slave();
-int init_master();
-int init_leds();
+
+extern int receiveData;
+
+void init_communication(int is_master);
+void init_leds();
 
 #endif /* HARDWARE_H_ */
