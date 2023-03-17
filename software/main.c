@@ -6,7 +6,7 @@
  */ 
 
 #include <xc.h>
-#include <avr/interrupt.h>
+
 #include "include/hardware.h"
 #include "include/LED_control.h"
 #include "include/bus_communication.h"
@@ -16,14 +16,16 @@
 
 #define IS_MASTER 0
 
+
+
 int main(void)
 {
 	// Pseudocode:
-	
 	// init_hardware(self_is_master_or_slave, self_num); (setter cur-animation-num til -1 slik at animate ikke viser noe
-	sei();	
+	sei();
 	init_leds();	// led med små bokstaver :)
 	init_communication(IS_MASTER);
+		
 	
 	// if (self_is_master) {
 		// start animation_sequencer_interrupt();

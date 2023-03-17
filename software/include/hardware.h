@@ -10,6 +10,7 @@
 #define HARDWARE_H_
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 
 #define F_CPU					3333333UL	// 20MHz with default 6 prescaler
 
