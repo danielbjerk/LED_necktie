@@ -117,16 +117,13 @@
     <Compile Include="bus_communication.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="hardware.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="include\animate.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="include\bus_communication.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="include\hardware.h">
+    <Compile Include="include\hardware_pins.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="include\LED_control.h">

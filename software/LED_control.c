@@ -7,6 +7,12 @@
 
 #include "include/LED_control.h"
 
+void init_leds() {
+	LED_COLOR0_PORT.DIRSET = ALL_COLOR0_LEDS_bm;
+	LED_COLOR1_PORT.DIRSET = ALL_COLOR1_LEDS_bm;
+	return;
+}
+
 int turn_all_on_color(int color) {
 	switch (color) {
 		case 0:

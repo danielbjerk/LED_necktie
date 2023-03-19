@@ -7,11 +7,12 @@
 
 #include <xc.h>
 
-#include "include/hardware.h"
+#include "include/hardware_pins.h"
 #include "include/LED_control.h"
 #include "include/bus_communication.h"
 
 // Included to do delays
+// only for debugging?
 #include <util/delay.h>
 
 #define IS_MASTER 0
@@ -54,7 +55,7 @@ int main(void)
 			_delay_ms(1000);
 		} else {
 			turn_all_off();
-			if (receiveData != -1) {
+			if (!(receiveData < 0)) {
 				turn_on_single(0, receiveData);	
 			}
 		}

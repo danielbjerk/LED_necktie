@@ -9,7 +9,8 @@
 #ifndef BUS_COMMUNICATION_H_
 #define BUS_COMMUNICATION_H_
 
-#include "hardware.h"
+#include "hardware_pins.h"
+#include <avr/interrupt.h>
 
 uint8_t bus_writer(uint8_t data);
 

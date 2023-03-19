@@ -9,7 +9,7 @@
 #ifndef LED_CONTROL_H_
 #define LED_CONTROL_H_
 
-#include "hardware.h"
+#include "hardware_pins.h"
 
 int turn_all_on_color(int color);
 int turn_all_off_color(int color);
