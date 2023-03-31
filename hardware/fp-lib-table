@@ -1,0 +1,6 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "52207-0960")(type "Legacy")(uri "${KIPRJMOD}/footprints/52207-0960.mod")(options "")(descr ""))
+  (lib (name "WP103IDT")(type "Legacy")(uri "${KIPRJMOD}/footprints/WP103IDT.mod")(options "")(descr ""))
+  (lib (name "SN74HCS138DYYR")(type "Legacy")(uri "${KIPRJMOD}/footprints/SN74HCS138DYYR.mod")(options "")(descr ""))
+)

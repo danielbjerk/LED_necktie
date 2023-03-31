@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "52207-0960")(type "Legacy")(uri "${KIPRJMOD}/symbols/52207-0960.lib")(options "")(descr ""))
+  (lib (name "WP103IDT")(type "Legacy")(uri "${KIPRJMOD}/symbols/WP103IDT.lib")(options "")(descr ""))
+  (lib (name "SN74HCS138DYYR")(type "Legacy")(uri "${KIPRJMOD}/symbols/SN74HCS138DYYR.lib")(options "")(descr ""))
+)
